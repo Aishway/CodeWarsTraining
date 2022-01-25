@@ -1,7 +1,4 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class AreTheyTheSame_6kyu {
 //   Given two arrays a and b write a function comp(a, b) (orcompSame(a, b)) that checks whether the two arrays have

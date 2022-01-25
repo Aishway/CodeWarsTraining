@@ -1,4 +1,6 @@
-public class MexicanWave {
+import java.util.Arrays;
+
+public class MexicanWave_6kyu {
     //The wave (known as the Mexican wave in the English-speaking world outside North America) is an example of
     // metachronal rhythm achieved in a packed stadium when successive groups of spectators briefly stand, yell,
     // and raise their arms. Immediately upon stretching to full height, the spectator returns to the usual seated position.
@@ -20,7 +22,29 @@ public class MexicanWave {
     // 2.  If the character in the string is whitespace then pass over it as if it was an empty seat
     //Example
     //wave("hello") => []string{"Hello", "hEllo", "heLlo", "helLo", "hellO"}
+
     public static void main(String[] args) {
-        
+        System.out.println(Arrays.toString(wave("hello")));
+    }
+
+    public static String[] wave(String str) {
+        if (str.length() == 0) {
+            return new String[0];
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ' ') {
+            } else {
+                for (int j = 0; j < str.length(); j++) {
+                    char[] array = str.toCharArray();
+                    array[i] = Character.toUpperCase(array[i]);
+                    sb.append(array[j]);
+                }
+                sb.append("-");
+            }
+        }
+        return sb.toString().split("-");
     }
 }
