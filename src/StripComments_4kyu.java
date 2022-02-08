@@ -1,0 +1,44 @@
+public class StripComments_4kyu {
+
+//    Complete the solution so that it strips all text that follows any of a set of comment
+//    markers passed in. Any whitespace at the end of the line should also be stripped out.
+//
+//Example:
+//
+//Given an input string of:
+//
+//apples, pears # and bananas
+//grapes
+//bananas !apples
+//The output expected would be:
+//
+//apples, pears
+//grapes
+//bananas
+//The code would be called like so:
+//
+//var result = solution("apples, pears # and bananas\ngrapes\nbananas !apples", ["#", "!"])
+//// result should == "apples, pears\ngrapes\nbananas"
+
+    public static void main(String[] args) {
+        System.out.println(stripComments("apples, pears # and bananas\ngrapes\nbananas !apples",
+                new String[]{"#", "!"}));
+    }
+
+    public static String stripComments(String text, String[] commentSymbols) {
+        String[] textSplitToLines = text.split("\n");
+        int stop = 0;
+
+
+        for (int i = 0; i < commentSymbols.length; i++) {
+            for (int j = 0; j < textSplitToLines.length; j++) {
+                stop = textSplitToLines[j].indexOf(commentSymbols[i]);
+                if (stop >= 0) {
+                    textSplitToLines[j] = textSplitToLines[j].substring(0, stop);
+                }
+                textSplitToLines[j] = textSplitToLines[j].stripTrailing();
+            }
+        }
+        return String.join("\n",textSplitToLines);
+    }
+}
